@@ -3,26 +3,24 @@
 #include <random>
 #include <map>
 #include <iostream>
-
+#include <string>
 
 namespace ArrayOperations
 {
-	void populate_ordered_set(int* arr, int size, bool reverse)
+	void populate_ordered_set(int* arr, int size)
 	{
-		if (reverse)
+		for (int i = 0; i < size; i++)
 		{
-			for (int i = size-1; i >= 0; i--)
-			{
-				arr[i] = i + 1;
-			}
+			arr[i] = i + 1;
+		}	
+	}
+
+	void populate_reverse_set(int* arr, int size)
+	{
+		for (int i = 0; i < size; i++)
+		{
+			arr[i] = size - i;
 		}
-		else
-		{
-			for (int i = 0; i < size; i++)
-			{
-				arr[i] = i + 1;
-			}
-		}		
 	}
 
 	void populate_random_set(int* arr, int size)
@@ -75,14 +73,17 @@ namespace ArrayOperations
 		return -1;
 	}
 
-	void print(int* arr, int size)
+	std::string print(int* arr, int size)
 	{
+		std::string output = "";
 		for (int k = 0; k < size; k++)
 		{
-			std::cout << arr[k] << " ";
+			output+= (std::to_string(arr[k]) +  " ");
 		}
 
-		std::cout << "\n";
+		output+= "\n";
+
+		return output;
 	}
 
 
