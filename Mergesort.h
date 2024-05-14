@@ -1,24 +1,23 @@
 #pragma once
 
+#include "Mergesort.h"
+#include "LinkedList.h"
+#include "Node.h"
+
 #include <string>
-#include <sstream>
 
 
 class Mergesort
 {
 public:
 	Mergesort();
-	Mergesort(int array[], int const begin, int const end);
-	void mergeSort(int array[], int const begin, int const end);
 	std::string getStats();
-	bool debug_output = false;
-	std::string getStream() {return ss.str();}
+	void merge(LinkedList<LinkedList<int>>& list_of_list, Node<int>** merged_list);
+
 private:
-	void merge(int array[], int const left, int const mid,
-		int const right);
+	void moveNode(Node<int>** destRef, Node<int>** sourceRef);
+	Node<int>* sortedMerge(Node<int>* a, Node<int>* b);
 
 	int swapCount = 0;
 	int compCount = 0;
-	std::stringstream ss;
 };
-
